@@ -15,6 +15,7 @@
   <body>
   <form action="ServletOfPage/TestServlet" method="post">
   $END$
+    <h2>Github is ready</h2>
     <input type="submit">
   </form>
   </body>
