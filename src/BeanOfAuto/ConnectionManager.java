@@ -21,7 +21,7 @@ public class ConnectionManager {
 	public ConnectionManager()
 	{}
 	
-	public Connection ConnectDataBase(String durl,String account,String pw) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException
+	public Connection ConnectDataBase(String url,String user,String pwd) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException
 	{
 		/* try {
 	            Class.forName("com.mysql.jdbc.Driver");
@@ -39,9 +39,7 @@ public class ConnectionManager {
 		//	pw.println("Class fro mnam e Driver Error");
 			e.printStackTrace();
 		}
-		String url="jdbc:mysql://bdm256530140.my3w.com:3306/bdm256530140_db";
-		String user="bdm256530140";
-		String pwd="datapwd123";
+
 
 		try {
 			this.con=DriverManager.getConnection(url,user,pwd);
