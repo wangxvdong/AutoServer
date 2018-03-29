@@ -22,7 +22,14 @@
   <form action="ServletOfPage/ServletAtIndex" method="post">
   <div data-role="page" id="pageone">
     <div data-role="header">
-      <h2>欢迎？？？</h2>
+      <h1>欢迎访问我的主页</h1>
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#anylink" data-icon="home">首页</a></li>
+          <li><a href="#anylink">页面二</a></li>
+          <li><a href="#anylink">搜索</a></li>
+        </ul>
+      </div>
     </div>
 
     <div data-role="main" class="ui-content">

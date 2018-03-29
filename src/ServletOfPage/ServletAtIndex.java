@@ -13,10 +13,11 @@ public class ServletAtIndex extends HttpServlet  {
         System.out.println("hello inti");
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //   PrintWriter pw= response.getWriter();
-         //   pw.println("hello jquery");
-       //    pw.close();
-           System.out.println("heleo world dopost");
+
+          PrintWriter pw= response.getWriter();
+          pw.println("hello jquery"+request.getSession().getAttribute("hello"));
+           pw.close();
+           System.out.println("heleo world dopost"+request.getSession().getAttribute("hello"));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

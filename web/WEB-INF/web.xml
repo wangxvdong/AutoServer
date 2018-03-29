@@ -19,5 +19,7 @@
         <servlet-name>servletatindex</servlet-name>
         <url-pattern>/ServletOfPage/ServletAtIndex</url-pattern>
     </servlet-mapping>
-
+<listener>
+    <listener-class>Global.MySessionListener</listener-class>
+</listener>
 </web-app>
