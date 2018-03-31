@@ -19,6 +19,14 @@
         <servlet-name>servletatindex</servlet-name>
         <url-pattern>/ServletOfPage/ServletAtIndex</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>servletoflogin</servlet-name>
+        <servlet-class>ServletOfPage.ServletOfLogin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>servletoflogin</servlet-name>
+        <url-pattern>/ServletOfPage/ServletOfLogin</url-pattern>
+    </servlet-mapping>
 <listener>
     <listener-class>Global.MySessionListener</listener-class>
 </listener>
