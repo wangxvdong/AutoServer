@@ -1,4 +1,5 @@
-<%--
+<%@ page import="ServletOfPage.ServletAtIndex" %>
+<%@ page import="Bean.PageBean" %><%--
   Created by IntelliJ IDEA.
   User: Stand
   Date: 2018/3/20
@@ -8,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
+    <jsp:useBean id="name" scope="page" class="Bean.PageBean"></jsp:useBean>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <script src="JQueryMobile/jquery-3.3.1.min.js"></script>
@@ -22,7 +24,12 @@
   <form action="ServletOfPage/ServletAtIndex" method="post">
   <div data-role="page" id="pageone">
     <div data-role="header">
+      <a href="#" class="ui-btn ui-icon-home ui-btn-icon-left">主页</a>
       <h1>欢迎访问我的主页</h1>
+      <%
+        PageBean p=(PageBean) request.getSession().getAttribute("username_");
+      %>
+      <a href="/login.jsp" class="ui-btn ui-icon-user ui-btn-icon-left" name="username"><%=p.getUsername()%></a>
       <div data-role="navbar">
         <ul>
           <li><a href="#anylink" data-icon="home">首页</a></li>
