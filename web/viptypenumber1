@@ -1,0 +1,3 @@
+<input type=text name=begintime placeholder="begin time..." />
+<br>
+<input type=text name=endtime placeholder="end time..." />
