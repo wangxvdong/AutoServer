@@ -32,9 +32,18 @@
         <servlet-name>servletoflogin</servlet-name>
         <servlet-class>ServletOfPage.ServletOfLogin</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>servletoflogin</servlet-name>
         <url-pattern>/ServletOfPage/ServletOfLogin</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletOfDeductVip</servlet-name>
+        <servlet-class>ServletOfPage.ServletOfDeductVip</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletOfDeductVip</servlet-name>
+        <url-pattern>/ServletOfPage/ServletOfDeductVip</url-pattern>
     </servlet-mapping>
 <listener>
     <listener-class>Global.MySessionListener</listener-class>

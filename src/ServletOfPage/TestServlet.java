@@ -16,6 +16,25 @@ import java.sql.SQLException;
 public class TestServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
+
+      /*  if((request.getSession().getAttribute("isfirstrunofsearchvip").toString().equals("true"))) {
+            request.getSession().setAttribute("isfirstrunofsearchvip", "false");
+        }
+        else{*/
+
+            String sb = request.getParameter("searchbox").toString();
+
+            if (sb != null)
+                if ( !sb.isEmpty()) {
+
+
+                    request.getSession().setAttribute("searchvip", sb);
+                    response.sendRedirect("/deductvip.jsp");
+                    return;
+                }
+
+       // }
         /*
 
         String url="jdbc:mysql://bdm256530140.my3w.com:3306/bdm256530140_db";
@@ -23,7 +42,7 @@ public class TestServlet extends HttpServlet {
 		String pwd="datapwd123";
 
          */
-        String url="jdbc:mysql://localhost:3306/automobileservice";
+       /* String url="jdbc:mysql://localhost:3306/automobileservice";
         String user="root";
         String pwd="123456";
 
@@ -68,6 +87,7 @@ public class TestServlet extends HttpServlet {
         cm.closeDBConnection();
         PrintWriter pw=response.getWriter();
         pw.println("hwllwo world");
+        */
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -20,6 +20,7 @@ public class MySessionListener implements HttpSessionListener{
         if(hs.isNew()) {
             hs.setAttribute("nowdate",new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()));
             hs.setAttribute("hello", "world!!!!!!!!!!");
+            hs.setAttribute("isfirstrunofsearchvip", "true");
             System.out.println("session created");
         }
 
