@@ -15,23 +15,24 @@
     <title>Title</title>
 
 
-   <%-- <script>
-        $(document).ready(function(){
+    <script>
+       /* $(document).ready(function(){
             $("#submit").click(function () {
                 $.ajax({
                     type:"post",
                     url:"ServletOfPage/TestServlet",
-                    data:"buttonname=submit&searchvip="+$("#searchbox").val()
+                    data:"searchbox="+$("#searchbox").val()
                 })
             })
-        })
-    </script>--%>
+        })*/
+    </script>
 </head>
 <form action="ServletOfPage/TestServlet" method="post">
 <body>
 <div data-role="page" >
     <div data-role="main" class="ui-content">
         <input type="text" id="searchbox" name="searchbox" placeholder="请输入会员号或者手机号">
+
         <input type="submit" id="submit" name="submit" value="搜索">
     </div>
 </div>

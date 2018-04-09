@@ -3,6 +3,7 @@ package BeanOfAuto;
 public class CustomerOfVip
 {
 	public String id;
+	public int vid;
 	public String name;
 	public String plate;
 	public String phone;

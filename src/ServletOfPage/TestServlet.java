@@ -1,9 +1,6 @@
 package ServletOfPage;
 
-import BeanOfAuto.ConnectionManager;
-import BeanOfAuto.CustomerManager;
-import BeanOfAuto.EmployeeManager;
-import BeanOfAuto.RecordConsumption;
+import BeanOfAuto.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class TestServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,15 +22,38 @@ public class TestServlet extends HttpServlet {
         else{*/
 
             String sb = request.getParameter("searchbox").toString();
+        DBConnection con=new DBConnection();
+        String url="jdbc:mysql://bdm256530140.my3w.com:3306/bdm256530140_db";
+        String user="bdm256530140";
+        String pwddb="datapwd123";
+        try {
+            con.ConnectDataBase(url,user,pwddb);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
+        CustomerManager cm=new CustomerManager();
+        cm.initDBConnect(con.GetDBConnection());
+        try {
+            ArrayList al= cm.GetCustomerInfoS(sb); // 只取出单条客户记录,尽快改成多条可选择方式!!!
             if (sb != null)
                 if ( !sb.isEmpty()) {
 
 
-                    request.getSession().setAttribute("searchvip", sb);
+                    request.getSession().setAttribute("searchvip", al.get(0));
                     response.sendRedirect("/deductvip.jsp");
                     return;
                 }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
        // }
         /*

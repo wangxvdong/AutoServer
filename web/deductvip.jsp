@@ -1,4 +1,4 @@
-<%--
+<%@ page import="BeanOfAuto.CustomerOfVip" %><%--
   Created by IntelliJ IDEA.
   User: Stand
   Date: 2018/4/8
@@ -15,17 +15,62 @@
 
 
     <title>Title</title>
+
+    <script>
+
+        $(document).on("pagebeforecreate",function(){
+            $.ajax({
+                type:"post",
+                url:"/ServletOfPage/ServletOfDeductVip",
+                data:"pagemsg='pageinit'"
+            })
+        })
+        /*$(document).on("pagecreate",function(){
+            alert("pagecreate 事件触发 - 页面已经创建，但还未增强完成");
+        });*/
+
+    $(document).ready(function(){
+        $("#submitd").click(function () {
+          $.ajax({
+              type:"post",
+              url:"ServletOfPage/ServletOfDeductVip",
+              data:"projecttype="+$("#projecttype").val()+"&projectcount="+$("#projectcount").val()
+          })
+        })
+    })
+</script>
+
 </head>
 <form action="/ServletOfPage/ServletOfDeductVip" method="post">
 <body>
+<%
+    CustomerOfVip cp= ((CustomerOfVip)request.getSession().getAttribute("searchvip"));
+%>
 <div data-role="page">
     <div data-role="main" class="ui-content">
-        <p>hello deduct!!!</p>
+       <%--<input type="text" readonly="readonly" id="p1num" value="<%=cp.p1num%>">--%>
+       <input type="text" readonly="readonly" id="p2num" value="${cp.p2num}">
+       <input type="text" readonly="readonly" id="p3num" value="${cp.p3num}">
+        <div data-role="collapsible">
+            <h2>选择项目</h2>
+            <ul data-role="listview" id="projecttype">
+                <li><input type="radio" name="projecttype" id="ptnum1" value="洗车"></li>
+                <li><input type="radio" name="projecttype" id="ptnum2" value="打蜡"></li>
+                <li><input type="radio" name="projecttype" id="ptnum3" value="去污"></li>
+            </ul>
+        </div>
+        <div data-role="collapsible">
+            <h2>选择数量</h2>
+            <ul data-role="listview" id="projectcount">
+                <li><input type="radio" name="projectcount"  value="1"></li>
+                <li><input type="radio" name="projectcount"  value="2"></li>
+                <li><input type="radio" name="projectcount"  value="3"></li>
+            </ul>
+        </div>
+        <input type="button" id="submitd" value="提交">
     </div>
 </div>
 </body>
 </form>
-<%
-    System.out.println(request.getSession().getAttribute("searchvip").toString());
-%>
+
 </html>

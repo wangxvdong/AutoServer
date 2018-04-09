@@ -75,8 +75,9 @@ public class CustomerManager {
     {
 
 
-        ResultSet rs= this.stmt.executeQuery("select * from customer inner join vipcard on customer.cid=vipcard.cid where vipcard.vcid="+val+" or plate like '%"+val+"%' or contact like '%"+val+"%'");
-        rs.first();
+        Statement st=this.con.createStatement();
+        ResultSet rs= st.executeQuery("select * from customer inner join vipcard on customer.cid=vipcard.cid where vipcard.vcid="+val+" or plate like '%"+val+"%' or contact like '%"+val+"%'");
+//        rs.first();
         ArrayList<CustomerOfVip> alcv=new ArrayList<CustomerOfVip>();
         while(rs.next())
         {

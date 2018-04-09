@@ -3,7 +3,7 @@ package BeanOfAuto;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class RecordConsumption {
+public class ConsumpManager {
     private ArrayList<Staff> alStaff;
     private Connection con;
     private PreparedStatement prep;
@@ -38,11 +38,12 @@ public class RecordConsumption {
         return false;
     }
 
-    public boolean updateEmployee(String id,String cols,String value) throws SQLException {
+    public boolean deduct(String id,String cols,String value) throws SQLException {
 
         try{
 
-            this.prep= con.prepareStatement("update employee set "+cols+" = ? where eid=?");
+
+            this.prep= con.prepareStatement("update vipcard set "+cols+" = ? where eid=?");
             prep.clearBatch();
             prep.setString(1,value);
             prep.setString(2,id);
@@ -75,5 +76,4 @@ public class RecordConsumption {
         if(!this.prep.isClosed())
             this.prep.close();
     }
-//    public void
 }
