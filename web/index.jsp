@@ -13,10 +13,14 @@
     <jsp:useBean id="name" scope="page" class="Bean.PageBean"></jsp:useBean>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<script src="/JQueryMobile/jquery-3.3.1.min.js"></script>
-    <script src="/JQueryMobile/jquery.mobile-1.4.5.min.js"></script>
-    <link rel="stylesheet" href="/JQueryMobile/jquery.mobile-1.4.5.min.css">
-    <script src="/JQueryMobile/jquery.mobile-1.4.5.js"></script>
+<%--<script src="/JQueryMobile/jquery-3.3.1.min.js"></script>--%>
+    <%--<script src="/JQueryMobile/jquery.mobile-1.4.5.min.js"></script>--%>
+    <%--<link rel="stylesheet" href="/JQueryMobile/jquery.mobile-1.4.5.min.css">--%>
+    <%--<script src="/JQueryMobile/jquery.mobile-1.4.5.js"></script>--%>
+    <script src="/AutoServer/JQueryMobile/jquery-3.3.1.min.js"></script>
+    <script src="/AutoServer/JQueryMobile/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="/AutoServer/JQueryMobile/jquery.mobile-1.4.5.min.css">
+    <script src="/AutoServer/JQueryMobile/jquery.mobile-1.4.5.js"></script>
 
     <title>###汽车服务有限公司</title>
 
@@ -84,7 +88,7 @@
     <div data-role="main" class="ui-content">
       <p>i am a mobile webpage programer</p>
         <button onclick="window.location.href='/registervip.jsp'">注册会员</button>
-        <button onclick="window.location.href='/searchvip.jsp'">会员扣次</button>
+        <button onclick="window.location.href='/AutoServer/searchvip.jsp'">会员扣次</button>
         <%--<a href="registervip.jsp" id="regviplink">注册会员</a>--%>
         <input type="button" id="submitindex" value="提交">
       <%--<jsp:forward page="login.jsp">跳转</jsp:forward>--%>

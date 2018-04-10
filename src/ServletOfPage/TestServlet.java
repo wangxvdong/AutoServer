@@ -16,6 +16,11 @@ public class TestServlet extends HttpServlet {
 
 
 
+       /* String s= request.getParameter("dsubmit").toString();
+        if(s.equals("确认submit"))
+        {
+            request.getRequestDispatcher( "/ServletOfPage/ServletOfDeductVip" ).forward(request,   response);
+        }*/
       /*  if((request.getSession().getAttribute("isfirstrunofsearchvip").toString().equals("true"))) {
             request.getSession().setAttribute("isfirstrunofsearchvip", "false");
         }
@@ -47,7 +52,11 @@ public class TestServlet extends HttpServlet {
 
 
                     request.getSession().setAttribute("searchvip", al.get(0));
-                    response.sendRedirect("/deductvip.jsp");
+                    String path = request.getContextPath();
+                    String basePath = request.getScheme()+"://" +request.getServerName()+":" +request.getServerPort()+path+"/" ;
+                    response.sendRedirect(basePath+"deductvip.jsp");
+//                    request.getRequestDispatcher( "/deductvip.jsp" ).forward(request,   response);
+                   // response.sendRedirect("/deductvip.jsp");
                     return;
                 }
         } catch (SQLException e) {

@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <script src="/JQueryMobile/jquery-3.3.1.min.js"></script>
-    <script src="/JQueryMobile/jquery.mobile-1.4.5.min.js"></script>
-    <link rel="stylesheet" href="/JQueryMobile/jquery.mobile-1.4.5.min.css">
-    <script src="/JQueryMobile/jquery.mobile-1.4.5.js"></script>
+    <script src="/AutoServer/JQueryMobile/jquery-3.3.1.min.js"></script>
+    <script src="/AutoServer/JQueryMobile/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="/AutoServer/JQueryMobile/jquery.mobile-1.4.5.min.css">
+    <script src="/AutoServer/JQueryMobile/jquery.mobile-1.4.5.js"></script>
     <title>Title</title>
 
 
