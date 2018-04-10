@@ -16,15 +16,25 @@
 
 
     <script>
-       /* $(document).ready(function(){
+        $(document).ready(function() {
             $("#submit").click(function () {
+                $.ajax({
+                    type: "post",
+                    url: "ServletOfPage/TestServlet",
+                    data: "searchbox=" + $("#searchbox").val() + "&pagemsg=search"
+                })
+            })
+        })
+         $(document).ready(function(){
+            $("#submitd").click(function () {
                 $.ajax({
                     type:"post",
                     url:"ServletOfPage/TestServlet",
-                    data:"searchbox="+$("#searchbox").val()
+                    // $("input[name='radio']:checked").val()
+                    data:"pagemsg=searchd&projecttype="+$("input[name='projecttype']:checked").val()+"&projectcount="+$("input[name='projectcount']:checked").val()
                 })
             })
-        })*/
+        })
     </script>
 </head>
 <form action="ServletOfPage/TestServlet" method="post">
@@ -35,6 +45,35 @@
 
         <input type="submit" id="submit" name="submit" value="搜索">
     </div>
+
+
+
+
+
+
+    <input type="text" readonly="readonly" id="p2num" value="${cp.p2num}">
+    <input type="text" readonly="readonly" id="p3num" value="${cp.p3num}">
+    <div data-role="collapsible">
+        <h2>选择项目</h2>
+        <ul data-role="listview" id="projecttype">
+            <li><input type="radio" name="projecttype" id="ptnum1" value="洗车">洗车</li>
+            <li><input type="radio" name="projecttype" id="ptnum2" value="打蜡">打蜡</li>
+            <li><input type="radio" name="projecttype" id="ptnum3" value="去污">去污</li>
+        </ul>
+    </div>
+    <div data-role="collapsible">
+        <h2>选择数量</h2>
+        <ul data-role="listview" id="projectcount">
+            <li><input type="radio" name="projectcount"  value="1">1</li>
+            <li><input type="radio" name="projectcount"  value="2">2</li>
+            <li><input type="radio" name="projectcount"  value="3">3</li>
+        </ul>
+    </div>
+    <input type="button" id="submitd" value="提交" >
+    <input type="submit" id="dsubmit" value="确认submit">
+    <%
+
+    %>
 </div>
 </body>
 </form>

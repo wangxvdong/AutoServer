@@ -43,10 +43,10 @@ public class ConsumpManager {
         try{
 
 
-            this.prep= con.prepareStatement("update vipcard set "+cols+" = ? where eid=?");
+            this.prep= con.prepareStatement("update vipcard set "+cols+" ="+cols+"- ? where vcid=?");
             prep.clearBatch();
-            prep.setString(1,value);
-            prep.setString(2,id);
+            prep.setInt(1,Integer.parseInt(value));
+            prep.setInt(2,Integer.parseInt(id));
             prep.addBatch();
 
             prep.executeBatch();

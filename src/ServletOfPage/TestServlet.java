@@ -25,14 +25,12 @@ public class TestServlet extends HttpServlet {
             request.getSession().setAttribute("isfirstrunofsearchvip", "false");
         }
         else{*/
-
-            String sb = request.getParameter("searchbox").toString();
-        DBConnection con=new DBConnection();
-        String url="jdbc:mysql://bdm256530140.my3w.com:3306/bdm256530140_db";
-        String user="bdm256530140";
-        String pwddb="datapwd123";
+        DBConnection con = new DBConnection();
+        String url = "jdbc:mysql://bdm256530140.my3w.com:3306/bdm256530140_db";
+        String user = "bdm256530140";
+        String pwddb = "datapwd123";
         try {
-            con.ConnectDataBase(url,user,pwddb);
+            con.ConnectDataBase(url, user, pwddb);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -43,26 +41,76 @@ public class TestServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        CustomerManager cm=new CustomerManager();
-        cm.initDBConnect(con.GetDBConnection());
-        try {
-            ArrayList al= cm.GetCustomerInfoS(sb); // 只取出单条客户记录,尽快改成多条可选择方式!!!
-            if (sb != null)
-                if ( !sb.isEmpty()) {
+        String ssssss= request.getParameter("pagemsg").toString();
+      if(request.getParameter("pagemsg").toString().equals("search")) {
+          String sb = request.getParameter("searchbox").toString();
+
+          CustomerManager cm = new CustomerManager();
+          cm.initDBConnect(con.GetDBConnection());
+          try {
+              ArrayList al = cm.GetCustomerInfoS(sb); // 只取出单条客户记录,尽快改成多条可选择方式!!!
+              if (sb != null)
+                  if (!sb.isEmpty()) {
 
 
-                    request.getSession().setAttribute("searchvip", al.get(0));
-                    String path = request.getContextPath();
-                    String basePath = request.getScheme()+"://" +request.getServerName()+":" +request.getServerPort()+path+"/" ;
-                    response.sendRedirect(basePath+"deductvip.jsp");
+                      request.getSession().setAttribute("searchvip", al.get(0));
+                      String path = request.getContextPath();
+                      String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+                      //response.sendRedirect(basePath+"deductvip.jsp");
 //                    request.getRequestDispatcher( "/deductvip.jsp" ).forward(request,   response);
-                   // response.sendRedirect("/deductvip.jsp");
-                    return;
-                }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+                      // response.sendRedirect("/deductvip.jsp");
+                      // return;
+                      // 之前的跳转到deductvip.jsp的代码 上面
 
+
+
+                  }
+          } catch (SQLException e) {
+              e.printStackTrace();
+          }
+      }
+      else if (request.getParameter("pagemsg").toString().equals("searchd"))
+      {
+          CustomerOfVip cp = ((CustomerOfVip) request.getSession().getAttribute("searchvip"));
+          String pt = request.getParameter("projecttype").toString();
+          String pc = request.getParameter("projectcount").toString();
+          ConsumpManager cmr = new ConsumpManager();
+                    /*DBConnection con=new DBConnection();
+                    String url="jdbc:mysql://bdm256530140.my3w.com:3306/bdm256530140_db";
+                    String user="bdm256530140";
+                    String pwddb="datapwd123";
+                    try {
+                        con.ConnectDataBase(url,user,pwddb);
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    } catch (InstantiationException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+*/
+          cmr.initDBConnect(con.GetDBConnection());
+          try {
+              switch (pt) {
+                  case "洗车":
+                      cmr.deduct(cp.id, "p1", pc);
+                      break;
+                  case "打蜡":
+                      cmr.deduct(cp.id, "p2", pc);
+                      break;
+                  case "去污":
+                      cmr.deduct(cp.id, "p3", pc);
+                      break;
+              }
+
+          } catch (SQLException e) {
+              e.printStackTrace();
+          }
+
+
+      }
 
        // }
         /*
