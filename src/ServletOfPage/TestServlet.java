@@ -25,6 +25,7 @@ public class TestServlet extends HttpServlet {
             request.getSession().setAttribute("isfirstrunofsearchvip", "false");
         }
         else{*/
+     // String prolist=request.getParameter("projecttypelist").toString();
         DBConnection con = new DBConnection();
         String url = "jdbc:mysql://bdm256530140.my3w.com:3306/bdm256530140_db";
         String user = "bdm256530140";
@@ -51,15 +52,19 @@ public class TestServlet extends HttpServlet {
               ArrayList al = cm.GetCustomerInfoS(sb); // 只取出单条客户记录,尽快改成多条可选择方式!!!
               if (sb != null)
                   if (!sb.isEmpty()) {
+                      CustomerOfVip cvp=( (CustomerOfVip)al.get(0));
+                     // request.setAttribute("xcnum",cvp.p1num);
+                      request.getSession().setAttribute("projectnum",cvp);
+                    //  request.setAttribute("qunum",cvp.p3num);
 
 
                       request.getSession().setAttribute("searchvip", al.get(0));
                       String path = request.getContextPath();
                       String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
                       //response.sendRedirect(basePath+"deductvip.jsp");
-//                    request.getRequestDispatcher( "/deductvip.jsp" ).forward(request,   response);
-                      // response.sendRedirect("/deductvip.jsp");
-                      // return;
+                 // request.getRequestDispatcher( basePath+"searchvip.jsp" ).forward(request,   response);
+                 /*      response.sendRedirect("/searchvip.jsp");
+                        return;*/
                       // 之前的跳转到deductvip.jsp的代码 上面
 
 

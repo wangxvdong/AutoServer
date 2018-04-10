@@ -70,12 +70,13 @@
 
 
         }
-
+          String path = request.getContextPath();
+          String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
       %>
 
       <%--<a href="/login.jsp" class="ui-btn ui-icon-user ui-btn-icon-left" name="username"><%=p.getUsername()%></a>--%>
 
-        <button  id="login" class="ui-btn ui-icon-user ui-btn-icon-left" name="username" onClick="window.location='/login.jsp'"><%=p.getUsername()%></button>
+        <button  id="login" class="ui-btn ui-icon-user ui-btn-icon-left" name="username" onClick="window.location='<%=basePath%>login.jsp'"><%=p.getUsername()%></button>
       <div data-role="navbar">
         <ul>
           <li><a href="#anylink" data-icon="home">首页</a></li>

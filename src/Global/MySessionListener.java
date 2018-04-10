@@ -1,5 +1,6 @@
 package Global;
 
+import BeanOfAuto.CustomerOfVip;
 import org.apache.catalina.Session;
 
 import javax.servlet.http.HttpSession;
@@ -21,6 +22,9 @@ public class MySessionListener implements HttpSessionListener{
             hs.setAttribute("nowdate",new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()));
             hs.setAttribute("hello", "world!!!!!!!!!!");
             hs.setAttribute("isfirstrunofsearchvip", "true");
+            CustomerOfVip vp=new CustomerOfVip();
+            vp.id="-1";
+            hs.setAttribute("projectnum", vp);
             System.out.println("session created");
         }
 
