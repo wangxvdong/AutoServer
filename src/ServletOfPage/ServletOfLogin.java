@@ -27,6 +27,7 @@ public class ServletOfLogin extends HttpServlet {
         System.out.println(request.getParameter("username"));
         System.out.println(request.getParameter("userpwd"));*/
         Staff s = AuthorityManager.verifyUser(request.getParameter("username"), request.getParameter("userpwd"));
+
         if (!s.name.isEmpty()) {
             PageBean pb = new PageBean();
             pb.setUsername_(s.name);
@@ -43,6 +44,7 @@ public class ServletOfLogin extends HttpServlet {
 
             /*response.sendRedirect("/index.jsp");
             return;*/
+            request.getSession().setAttribute("curemployee",s);
             RequestDispatcher rd= request.getRequestDispatcher("/index.jsp");
             rd.forward(request,response);
             // request.getSession().setAttribute("username",s.name);

@@ -21,7 +21,7 @@
     <%@ page isELIgnored="false" %>
 
     <script>
-        $(document).ready(function() {
+      /*  $(document).ready(function() {
             $("#submit").click(function () {
                 $.ajax({
                     type: "post",
@@ -44,7 +44,7 @@
 
                 })
             })
-        })
+        })*/
     </script>
 </head>
 <form action="ServletOfPage/TestServlet" method="post">
@@ -54,6 +54,7 @@
         <input type="text" id="searchbox" name="searchbox" placeholder="请输入会员号或者手机号">
 
         <input type="submit" id="submit" name="submit" value="搜索">
+
     </div>
 
 <%

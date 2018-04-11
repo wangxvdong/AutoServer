@@ -1,6 +1,7 @@
 package Global;
 
 import BeanOfAuto.CustomerOfVip;
+import BeanOfAuto.Staff;
 import org.apache.catalina.Session;
 
 import javax.servlet.http.HttpSession;
@@ -25,7 +26,11 @@ public class MySessionListener implements HttpSessionListener{
             CustomerOfVip vp=new CustomerOfVip();
             vp.id="-1";
             hs.setAttribute("projectnum", vp);
-            System.out.println("session created");
+            hs.setAttribute("deductviphasruned",false);
+            Staff s=new Staff();
+            s.name="nobody";
+            s.authority=10;
+            hs.setAttribute("curemployee",s);
         }
 
     }

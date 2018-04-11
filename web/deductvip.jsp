@@ -16,22 +16,20 @@
 
     <title>Title</title>
     <%
-        String path = request.getContextPath();
-        String basePath = request.getScheme()+"://" +request.getServerName()+":" +request.getServerPort()+path+"/" ;
-        System.out.println("=======Web Paht");
-        System.out.println(path);
-        System.out.println(basePath);
+      //  CustomerOfVip cp= ((CustomerOfVip)request.getSession().getAttribute("searchvip"));
+     //   System.out.println("deductvip===="+cp.name);
+      // request.getRequestDispatcher("/AutoServer/ServletOfPage/ServletOfDeductVip").forward(request,response);
     %>
-    <base href="<%=basePath%>" >
+
     <script>
 
-                $(document).on("pagebeforecreate",function(){
+              /*  $(document).on("pagebeforecreate",function(){
                     $.ajax({
                         type:"post",
-                        url:"/ServletOfPage/ServletOfDeductVip",
+                        url:"/AutoServer/ServletOfPage/ServletOfDeductVip",
                         data:"pagemsg='pageinit'"
                     })
-                })
+                })*/
                 /*$(document).on("pagecreate",function(){
                     alert("pagecreate 事件触发 - 页面已经创建，但还未增强完成");
                 });*/
@@ -40,7 +38,7 @@
                 $("#submitd").click(function () {
                   $.ajax({
                       type:"post",
-                      url:"/ServletOfPage/ServletOfDeductVip",
+                      url:"http://localhost:8080/AutoServer/ServletOfPage/ServletOfDeductVip.classs",
                       data:"projecttype="+$("#projecttype").val()+"&projectcount="+$("#projectcount").val()
                   })
                 })
@@ -48,16 +46,18 @@
 </script>
 
 </head>
-<%--<form action=+"/AutoServer/ServletOfPage/ServletOfDeductVip" method="post">--%>
+<form action="/AutoServer/ServletOfPage/ServletOfDeductVip" method="post">
 <body>
 <%
+    request.getSession().setAttribute("deductviphasruned",true);
     CustomerOfVip cp= ((CustomerOfVip)request.getSession().getAttribute("searchvip"));
+    System.out.println(cp.name);
 %>
 <div data-role="page">
     <div data-role="main" class="ui-content">
-       <%--<input type="text" readonly="readonly" id="p1num" value="<%=cp.p1num%>">--%>
-       <input type="text" readonly="readonly" id="p2num" value="${cp.p2num}">
-       <input type="text" readonly="readonly" id="p3num" value="${cp.p3num}">
+       <input type="text" readonly="readonly" id="p1num" value="<%=cp.p1num%>">
+       <input type="text" readonly="readonly" id="p2num" value="<%=cp.p2num%>">
+       <input type="text" readonly="readonly" id="p3num" value="<%=cp.p3num%>">
         <div data-role="collapsible">
             <h2>选择项目</h2>
             <ul data-role="listview" id="projecttype">
@@ -74,7 +74,7 @@
                 <li><input type="radio" name="projectcount"  value="3">3</li>
             </ul>
         </div>
-        <input type="button" id="submitd" value="提交" onclick='location="<%=basePath%>ServletOfPage/ServletOfDeductVip?=projecttype="+;'>
+        <%--<input type="button" id="submitd" value="提交" >--%>
         <input type="submit" id="dsubmit" value="确认submit">
         <%
 
@@ -82,6 +82,6 @@
     </div>
 </div>
 </body>
-<%--</form>--%>
+</form>
 
 </html>
