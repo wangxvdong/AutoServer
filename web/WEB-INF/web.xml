@@ -41,6 +41,22 @@
         <servlet-name>ServletOfDeductVip</servlet-name>
         <servlet-class>ServletOfPage.ServletOfDeductVip</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletOfRecharge</servlet-name>
+        <servlet-class>ServletOfPage.ServletOfRecharge</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletOfSearchRecharge</servlet-name>
+        <servlet-class>ServletOfPage.ServletOfSearchRecharge</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletOfSearchRecharge</servlet-name>
+        <url-pattern>/ServletOfPage/ServletOfSearchRecharge</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletOfRecharge</servlet-name>
+        <url-pattern>/ServletOfPage/ServletOfRecharge</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletOfDeductVip</servlet-name>
         <url-pattern>/ServletOfPage/ServletOfDeductVip</url-pattern>

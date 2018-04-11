@@ -90,6 +90,7 @@
       <p>i am a mobile webpage programer</p>
         <button onclick="window.location.href='/registervip.jsp'">注册会员</button>
         <button onclick="window.location.href='/AutoServer/searchvip.jsp'">会员扣次</button>
+      <a href="/AutoServer/searchrecharge.jsp" class="button">会员充值</a>
         <%--<a href="registervip.jsp" id="regviplink">注册会员</a>--%>
         <input type="button" id="submitindex" value="提交">
       <%--<jsp:forward page="login.jsp">跳转</jsp:forward>--%>

@@ -63,7 +63,7 @@
 %>
 
 
-
+<%--
 
     <input type="text"  id="p1num" value="<%=vippnum.p1num%>">
     <input type="text"  id="p2num" value="<%=vippnum.p2num%>">
@@ -88,7 +88,7 @@
     <input type="submit" id="dsubmit" value="确认submit">
     <%
 
-    %>
+    %>--%>
 </div>
 </body>
 </form>
