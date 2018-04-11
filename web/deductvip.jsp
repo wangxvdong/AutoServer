@@ -76,9 +76,7 @@
         </div>
         <%--<input type="button" id="submitd" value="提交" >--%>
         <input type="submit" id="dsubmit" value="确认submit">
-        <%
 
-        %>
     </div>
 </div>
 </body>
