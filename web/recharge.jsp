@@ -1,4 +1,4 @@
-<%--
+<%@ page import="BeanOfAuto.CustomerOfVip" %><%--
   Created by IntelliJ IDEA.
   User: Stand
   Date: 2018/4/11
@@ -21,11 +21,36 @@
 </head>
 <form action="/ServletOfPage/ServletOfRecharge" method="post">
 <body>
+<%
+    CustomerOfVip vp=(CustomerOfVip) request.getSession().getAttribute("searchboxrecharge");
+    System.out.println(vp.name+vp.phone);
+%>
 <div data-role="page" >
+    <div data-role="header" class="ui-header">
+        <h1>会员充值</h1>
+    </div>
     <div data-role="main" class="ui-content">
-        <input type="text" id="searchbox" name="searchbox" placeholder="请输入会员号或者手机号">
+        <input type="text" value="<%=vp.id%>">
+        <input type="text" value="<%=vp.name%>">
+        <input type="text" value="<%=vp.p1num%>">
+        <input type="text" value="<%=vp.p2num%>">
+        <p>======================</p>
+        <div data-role="collapsible">
+            <h2>选择项目</h2>
+            <ul data-role="listview" id="projecttype">
+                <li><input type="radio" name="projecttype" id="ptnum1" value="洗车">洗车</li>
+                <li><input type="radio" name="projecttype" id="ptnum2" value="打蜡">打蜡</li>
+                <li><input type="radio" name="projecttype" id="ptnum3" value="去污">去污</li>
+            </ul>
+        </div>
+        <div data-role="collapsible">
+            <h2>选择数量</h2>
 
-        <input type="submit" id="submit" name="submit" value="搜索">
+                <input type="number" name="projectcount"  placeholder="请输入数量。。。">
+
+        </div>
+
+        <input type="submit" name="rechargesubmit"  value="充值">
 
     </div>
 </div>

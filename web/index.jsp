@@ -35,6 +35,12 @@
               })
           })
       </script>
+    <%
+      String path = request.getContextPath();
+      String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+
+    %>
+    <base href="<%=basePath%>">
   </head>
 
 
@@ -70,8 +76,7 @@
 
 
         }
-          String path = request.getContextPath();
-          String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+
       %>
 
       <%--<a href="/login.jsp" class="ui-btn ui-icon-user ui-btn-icon-left" name="username"><%=p.getUsername()%></a>--%>
@@ -88,9 +93,10 @@
 
     <div data-role="main" class="ui-content">
       <p>i am a mobile webpage programer</p>
-        <button onclick="window.location.href='/registervip.jsp'">注册会员</button>
+        <button onclick="window.location.href='/AutoServer/registervip.jsp'">注册会员</button>
         <button onclick="window.location.href='/AutoServer/searchvip.jsp'">会员扣次</button>
-      <a href="/AutoServer/searchrecharge.jsp" class="button">会员充值</a>
+        <button onclick="window.location.href='/AutoServer/searchrecharge.jsp'">会员充值</button>
+      <%--<a href="/AutoServer/searchrecharge.jsp" class="button">会员充值</a>--%>
         <%--<a href="registervip.jsp" id="regviplink">注册会员</a>--%>
         <input type="button" id="submitindex" value="提交">
       <%--<jsp:forward page="login.jsp">跳转</jsp:forward>--%>

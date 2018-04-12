@@ -57,7 +57,25 @@ public class ConsumpManager {
         }
         return false;
     }
+    public boolean recharge(String id,String cols,String value) throws SQLException {
 
+        try{
+
+
+            this.prep= con.prepareStatement("update vipcard set "+cols+" ="+cols+"+ ? where vcid=?");
+            prep.clearBatch();
+            prep.setInt(1,Integer.parseInt(value));
+            prep.setInt(2,Integer.parseInt(id));
+            prep.addBatch();
+
+            prep.executeBatch();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public boolean deleteEmployee(int id) throws SQLException {
 
         try{

@@ -19,6 +19,13 @@ public class ServletOfSearchRecharge extends HttpServlet {
         Staff security=(Staff) request.getSession().getAttribute("curemployee");
         if(security.authority<=2) {
 
+            String condsubmit=request.getParameter("rechargesubmit");
+            if(condsubmit!=null)
+                if(condsubmit.equals("充值"))
+                {
+                    request.getRequestDispatcher("/ServletOfPage/ServletOfRecharge").forward(request,response);
+                    return;
+                }
 
        /* String s= request.getParameter("dsubmit").toString();
         if(s.equals("确认submit"))
@@ -51,7 +58,8 @@ public class ServletOfSearchRecharge extends HttpServlet {
 
             //  String ssssss= request.getParameter("pagemsg").toString();
             // if(request.getParameter("pagemsg").toString().equals("search")) {
-            String sb = request.getParameter("searchbox").toString();
+            String sb= request.getParameter("searchboxrecharge");
+          //  String sb = request.getParameter("searchboxcharge").toString();
 
             CustomerManager cm = new CustomerManager();
             cm.initDBConnect(con.GetDBConnection());
@@ -65,12 +73,12 @@ public class ServletOfSearchRecharge extends HttpServlet {
                         //  request.setAttribute("qunum",cvp.p3num);
 
 
-                        request.getSession().setAttribute("searchvip", al.get(0));
+                        request.getSession().setAttribute("searchboxrecharge", al.get(0));
                         String path = request.getContextPath();
                         String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
                         // response.sendRedirect("/AutoServer/deductvip.jsp");
                         //  return;
-                        request.getRequestDispatcher("/AutoServer/recharge.jsp").forward(request, response);
+                        request.getRequestDispatcher("/recharge.jsp").forward(request, response);
                  /*      response.sendRedirect("/searchvip.jsp");
                         return;*/
                         // 之前的跳转到deductvip.jsp的代码 上面

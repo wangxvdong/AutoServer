@@ -26,13 +26,14 @@
         })
 </script>
     </head>
-    <form action="/ServletOfPage/ServletOfSearchRechargeRecharge" method="post">
+    <form action="/AutoServer/ServletOfPage/ServletOfSearchRecharge" method="post">
 <body>
 <div data-role="page" >
     <div data-role="main" class="ui-content">
-        <input type="text" id="searchbox" name="searchbox" placeholder="请输入会员号或者手机号">
+        <input type="text" id="searchbox" name="searchboxrecharge" placeholder="请输入会员号或者手机号">
 
-       <input type="button" id="submitr" value="Search">
+       <%--<input type="button" id="submitr" value="Search">--%>
+        <input type="submit" name="searchrechargesubmit" value="提交">
         <%--<input type="submit" id="submitr" name="submit" value="搜索">--%>
 
     </div>
