@@ -49,14 +49,20 @@ public class CustomerManager {
 
         st.execute("insert into vipcard(cid,btime,etime,p1,p2,p3) values("+rs.getString("cid")+",'"+ctime+"','"+tenofyear+"',"+total+","+used+","+p3+")");
         st.close();
+       /* RecordConsumption rc=new RecordConsumption();
+        rc.initDBConnect(this.con);
+        if(Integer.valueOf(total)>=1)
+        rc.addRecordConsumption(rs.getString("cid"),"1",Integer.valueOf(total),)*/
     }
 
     public void insertnewvip_time(String ctime,String cid,String btime,String etime) throws SQLException
     {
-        ResultSet rs =this.stmt.executeQuery("select cid  from customer order by cid desc limit 1");
+        Statement st= this.con.createStatement();
+        ResultSet rs =st.executeQuery("select cid  from customer order by cid desc limit 1");
         rs.first();
-        this.stmt.execute("insert into viptimelimit(cid,begin,end,createtime) values("+rs.getString("cid")+",'"+btime+"','"+etime+"','"+ctime+"')");
+        st.execute("insert into vipcard(cid,btime,etime) values("+rs.getString("cid")+",'"+btime+"','"+etime+"')");
 
+        st.close();
         //this.stmt.
     }
 

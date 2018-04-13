@@ -15,18 +15,20 @@ public class RecordConsumption {
 
     }
 
-    public boolean addRecordConsumption(String cid,String cpid,float payable,float pocket,float rebate,String rctime) throws SQLException {
+    public boolean addRecordConsumption(String cid,String cpid,int count,float payable,float pocket,float rebate,String rctime) throws SQLException {
 
         try{
 
-            this.prep= con.prepareStatement("insert into recordconsumption(cid,cpid,payable,pocket,rebate,rctime) values(?,?,?,?,?,?)");
+
+            this.prep= con.prepareStatement("insert into recordconsumption(cid,cpid,count,payable,pocket,rebate,rctime) values(?,?,?,?,?,?,?)");
             prep.clearBatch();
             prep.setString(1,cid);
-            prep.setString(2,cpid);
-            prep.setFloat (3,payable);
-            prep.setFloat(4,pocket);
-            prep.setFloat(5,rebate);
-            prep.setDate(6, Date.valueOf(rctime));
+            prep.setInt(2,count);
+            prep.setString(3,cpid);
+            prep.setFloat (4,payable);
+            prep.setFloat(5,pocket);
+            prep.setFloat(6,rebate);
+            prep.setDate(7, Date.valueOf(rctime));
             prep.addBatch();
 
             prep.executeBatch();
@@ -38,7 +40,7 @@ public class RecordConsumption {
         return false;
     }
 
-    public boolean updateEmployee(String id,String cols,String value) throws SQLException {
+    private boolean updateEmployee(String id,String cols,String value) throws SQLException {
 
         try{
 
@@ -57,7 +59,7 @@ public class RecordConsumption {
         return false;
     }
 
-    public boolean deleteEmployee(int id) throws SQLException {
+    private boolean deleteEmployee(int id) throws SQLException {
 
         try{
 

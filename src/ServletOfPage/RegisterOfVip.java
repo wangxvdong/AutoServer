@@ -80,8 +80,6 @@ public class RegisterOfVip extends HttpServlet {
                                     cusm.insertnewcustomer(tname, plate, contact, cartype, regtime, isvip);
                                     if (lt.equals("number")) {
 //	con.insertnewvip(nowtime, )
-
-
                                         Date c = Calendar.getInstance().getTime();
                                         c.setYear(10);
 
