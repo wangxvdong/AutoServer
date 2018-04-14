@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ServletOfDeductVip extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,16 +43,30 @@ public class ServletOfDeductVip extends HttpServlet {
             }
 
             cm.initDBConnect(con.GetDBConnection());
+            RecordConsumption rcmpcon=new RecordConsumption();
+            rcmpcon.initDBConnect(con.GetDBConnection());
+
             try {
+
+                Date c= Calendar.getInstance().getTime();
+                Calendar now=Calendar.getInstance();
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+                String nowstr=sdf.format(now.getTime());
+
                 switch (pt) {
                     case "洗车":
                         cm.deduct(cp.id, "p1", pc);
+
+
+                        rcmpcon.addRecordConsumption(String.valueOf(cp.vid),"1",Integer.valueOf(pc),0,0,0,nowstr);
                         break;
                     case "打蜡":
                         cm.deduct(cp.id, "p2", pc);
+                        rcmpcon.addRecordConsumption(String.valueOf( cp.vid),"2",Integer.valueOf(pc),0,0,0,nowstr);
                         break;
                     case "去污":
                         cm.deduct(cp.id, "p3", pc);
+                        rcmpcon.addRecordConsumption(String.valueOf( cp.vid),"4",Integer.valueOf(pc),0,0,0,nowstr);
                         break;
                 }
 

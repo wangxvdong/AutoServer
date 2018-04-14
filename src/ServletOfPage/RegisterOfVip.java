@@ -1,9 +1,6 @@
 package ServletOfPage;
 
-import BeanOfAuto.ConnectionManager;
-import BeanOfAuto.CustomerManager;
-import BeanOfAuto.DBConnection;
-import BeanOfAuto.Staff;
+import BeanOfAuto.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -84,12 +81,30 @@ public class RegisterOfVip extends HttpServlet {
                                         c.setYear(10);
 
                                         cusm.insertnewvip(regtime, "00", request.getParameter("total"), request.getParameter("used"), "0");
+
+                                        RecordConsumption rcmpn=new RecordConsumption();
+                                        rcmpn.initDBConnect(con.GetDBConnection());
+                                        for (RecordConsump r:cusm.listReconrdConsump()
+                                             ) {
+                                            float payable=Float.valueOf( request.getParameter("payable"));
+                                            float pocket=Float.valueOf( request.getParameter("pocket"));
+                                            rcmpn.addRecordConsumption(r.cid,String.valueOf( r.cpid),r.count,payable,pocket,payable-pocket,r.date);
+                                        }
+
                                     } else if (lt.equals("time")) {
 
                                         isvip = new String("2");
 
                                         cusm.insertnewvip_time(regtime, "00", request.getParameter("begintime"), request.getParameter("endtime"));
-                                    } else {
+                                        RecordConsumption rcmpn = new RecordConsumption();
+                                        rcmpn.initDBConnect(con.GetDBConnection());
+                                        for (RecordConsump r : cusm.listReconrdConsump()
+                                                ) {
+                                            float payable = Float.valueOf(request.getParameter("payable"));
+                                            float pocket = Float.valueOf(request.getParameter("pocket"));
+                                            rcmpn.addRecordConsumption(r.cid, String.valueOf(r.cpid), r.count, payable, pocket, payable - pocket, r.date);
+                                        }
+                                    }else {
 
                                         isvip = new String("0");
                                         cusm.insertnewcustomer(tname, plate, contact, cartype, regtime, isvip);
@@ -126,8 +141,10 @@ public class RegisterOfVip extends HttpServlet {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
+            } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

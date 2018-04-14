@@ -20,11 +20,11 @@ public class RecordConsumption {
         try{
 
 
-            this.prep= con.prepareStatement("insert into recordconsumption(cid,cpid,count,payable,pocket,rebate,rctime) values(?,?,?,?,?,?,?)");
+            PreparedStatement prep= con.prepareStatement("insert into recordconsumption(cid,cpid,count,payable,pocket,rebate,rctime) values(?,?,?,?,?,?,?)");
             prep.clearBatch();
-            prep.setString(1,cid);
-            prep.setInt(2,count);
-            prep.setString(3,cpid);
+            prep.setInt(1,Integer.valueOf( cid));
+            prep.setInt(2,Integer.valueOf( cpid));
+            prep.setInt(3,count);
             prep.setFloat (4,payable);
             prep.setFloat(5,pocket);
             prep.setFloat(6,rebate);
@@ -32,6 +32,7 @@ public class RecordConsumption {
             prep.addBatch();
 
             prep.executeBatch();
+            prep.close();
             return true;
 
         } catch (SQLException e) {

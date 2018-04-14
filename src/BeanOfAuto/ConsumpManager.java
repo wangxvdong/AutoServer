@@ -7,6 +7,12 @@ public class ConsumpManager {
     private ArrayList<Staff> alStaff;
     private Connection con;
     private PreparedStatement prep;
+    private RecordConsump rcmp;
+
+    public ConsumpManager(){
+        this.rcmp=new RecordConsump();
+    }
+
     public Staff GetStaff(){
         return null;
     }

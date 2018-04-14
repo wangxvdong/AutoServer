@@ -7,12 +7,19 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
 import java.sql.ResultSet;
+import BeanOfAuto.RecordConsump;
+import java.util.ArrayList;
 
 public class CustomerManager {
 
     private Connection con;
     private Statement stmt;
+    private ArrayList<RecordConsump> rcmp;
 
+
+    public CustomerManager(){
+        this.rcmp=new ArrayList<>();
+    }
     public void initDBConnect(Connection c){
         con=c;
 
@@ -46,9 +53,36 @@ public class CustomerManager {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         String tenofyear=sdf.format(now.getTime());
         c.setYear(10);
-
-        st.execute("insert into vipcard(cid,btime,etime,p1,p2,p3) values("+rs.getString("cid")+",'"+ctime+"','"+tenofyear+"',"+total+","+used+","+p3+")");
+        String gscid=rs.getString("cid");
+        st.execute("insert into vipcard(cid,btime,etime,p1,p2,p3) values("+gscid+",'"+ctime+"','"+tenofyear+"',"+total+","+used+","+p3+")");
         st.close();
+        if(Integer.valueOf(total)>=1) {
+            RecordConsump r=new RecordConsump();
+
+            r.cid = gscid;
+            r.date = ctime;
+            r.cpid=1;
+            r.count=Integer.valueOf(total);
+            this.rcmp.add(r);
+        }
+        if(Integer.valueOf(used)>=1) {
+            RecordConsump r=new RecordConsump();
+
+            r.cid = gscid;
+            r.date = ctime;
+            r.cpid=2;
+            r.count=Integer.valueOf(used);
+            this.rcmp.add(r);
+        }
+        if(Integer.valueOf(p3)>=1) {
+            RecordConsump r=new RecordConsump();
+
+            r.cid = gscid;
+            r.date = ctime;
+            r.cpid=4;
+            r.count=Integer.valueOf(p3);
+            this.rcmp.add(r);
+        }
        /* RecordConsumption rc=new RecordConsumption();
         rc.initDBConnect(this.con);
         if(Integer.valueOf(total)>=1)
@@ -60,9 +94,20 @@ public class CustomerManager {
         Statement st= this.con.createStatement();
         ResultSet rs =st.executeQuery("select cid  from customer order by cid desc limit 1");
         rs.first();
+        String gscid=rs.getString("cid");
         st.execute("insert into vipcard(cid,btime,etime) values("+rs.getString("cid")+",'"+btime+"','"+etime+"')");
 
         st.close();
+        if(gscid!=null)
+         if(Integer.valueOf(gscid)>0){
+            RecordConsump r=new RecordConsump();
+
+            r.cid = gscid;
+            r.date = ctime;
+
+            this.rcmp.add(r);
+        }
+
         //this.stmt.
     }
 
@@ -95,6 +140,7 @@ public class CustomerManager {
             v.p1num=rs.getInt("p1");
             v.p2num=rs.getInt("p2");
             v.p3num=rs.getInt("p3");
+            v.vid=rs.getInt("cid");
             alcv.add(v);
         }
         return alcv;
@@ -130,5 +176,8 @@ public class CustomerManager {
 
 
 
+    }
+    public ArrayList<RecordConsump> listReconrdConsump(){
+        return this.rcmp;
     }
 }

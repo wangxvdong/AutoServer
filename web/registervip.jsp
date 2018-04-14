@@ -111,6 +111,8 @@
             <div id=vipcontext>...</div>
             <input type="date" name=regtime value=${sessionScope.nowdate}>
             <%--<input type="date" name=regtime value=<%=nowdate %>>--%>
+            <input type="number" name="pocket" placeholder="实付款">
+            <input type="number" name="payable" placeholder="应付款">
             <input type="submit" value="录入">
 
 
