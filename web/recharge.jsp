@@ -50,6 +50,8 @@
 
         </div>
 
+        <input type="number" name="pocket" placeholder="实付款">
+        <input type="number" name="payable" placeholder="应付款">
         <input type="submit" name="rechargesubmit"  value="充值">
 
     </div>
