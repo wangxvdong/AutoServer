@@ -180,4 +180,19 @@ public class CustomerManager {
     public ArrayList<RecordConsump> listReconrdConsump(){
         return this.rcmp;
     }
+
+    public ResultSet listExpiryMember() {
+
+
+        try {
+            Statement st = this.con.createStatement();
+          return st.executeQuery("select *  from expirymember");
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

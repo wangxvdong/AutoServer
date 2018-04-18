@@ -96,6 +96,7 @@
         <button onclick="window.location.href='/AutoServer/registervip.jsp'">注册会员</button>
         <button onclick="window.location.href='/AutoServer/searchvip.jsp'">会员扣次</button>
         <button onclick="window.location.href='/AutoServer/searchrecharge.jsp'">会员充值</button>
+        <a href="/AutoServer/expirymember.jsp" class="ui-btn>">查看过期会员</a>
       <%--<a href="/AutoServer/searchrecharge.jsp" class="button">会员充值</a>--%>
         <%--<a href="registervip.jsp" id="regviplink">注册会员</a>--%>
         <input type="button" id="submitindex" value="提交">
